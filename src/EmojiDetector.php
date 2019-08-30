@@ -132,14 +132,14 @@ class EmojiDetector {
 
 		$emoji = array_pop($emojis);
 		$string = str_replace($emoji->getEmoji(), '', $string);
-		if(strlen($string) > 0) return false;
+
+		$split = $this->str_split_unicode($string);
+		if(count($split) > 1) return false;
+		else if(count($split) === 1 && $split[0] === '') return false;
 
 		return true;
 	}
 
-	/**
-	 * @throws Exception
-	 */
 	private function loadMap() {
 		$mapFile = $this->dataDir . '/map.json';
 		if(!file_exists($mapFile)) {
@@ -150,9 +150,6 @@ class EmojiDetector {
 
 	}
 
-	/**
-	 * @throws Exception
-	 */
 	private function loadRawEmojis() {
 		$mapFile = $this->dataDir . '/raw.json';
 		if(!file_exists($mapFile)) {
@@ -181,6 +178,23 @@ class EmojiDetector {
 		if($ord0 >= 240 && $ord0 <= 247) return ($ord0 - 240) * 262144 + ($ord1 - 128) * 4096 + ($ord2 - 128) * 64 + ($ord3 - 128);
 
 		return false;
+	}
+
+	/**
+	 * @param $str
+	 * @param int $l
+	 * @return false|string[]
+	 */
+	private function str_split_unicode($str, $l = 0) {
+		if ($l > 0) {
+			$ret = array();
+			$len = mb_strlen($str, "UTF-8");
+			for ($i = 0; $i < $len; $i += $l) {
+				$ret[] = mb_substr($str, $i, $l, "UTF-8");
+			}
+			return $ret;
+		}
+		return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 	}
 
 }

@@ -18,7 +18,8 @@
   "minimum-stability": "dev",
   "require": {
 	"php": ">=7.0",
-	"ext-mbstring": "*"
+	"ext-mbstring": "*",
+	"ext-json": "*"
   },
   "require-dev": {
 	"symfony/phpunit-bridge": "^5.0@dev"
