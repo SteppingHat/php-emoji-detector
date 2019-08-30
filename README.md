@@ -4,7 +4,7 @@ PHP Emoji Detector
 Have an input string full of emoji's and you want to know detailed information about each emoji?
 Want to build an easy way to validate emoji's that come in as input data?
 
-This :clap: is :clap: the :clap: library :clap: for :clap: want!
+This :clap: is :clap: the :clap: library :clap: you :clap: want!
 
 ## What does this thing do?
 
