@@ -9,7 +9,7 @@ class MapGenerator {
 		if(!is_dir($dataDir)) mkdir($dataDir, 0777, true);
 
 		// Load emoji data from amio/emoji.json
-		$emojiData = json_decode(file_get_contents('https://unpkg.com/emoji.json@12.1.0/emoji.json'), true);
+		$emojiData = json_decode(file_get_contents('https://unpkg.com/emoji.json@13.1.0/emoji.json'), true);
 
 		$mapData = [];
 		$rawEmojis = [];
