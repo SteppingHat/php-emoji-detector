@@ -10,7 +10,7 @@ This :clap: is :clap: the :clap: library :clap: you :clap: want!
 
 ## What does this thing do?
 
-This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 12.1 of the emoji standard.
+This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 13.1 of the emoji standard.
 
 
 ## Installation
