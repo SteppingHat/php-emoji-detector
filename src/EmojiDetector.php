@@ -90,7 +90,10 @@ class EmojiDetector {
 		}
 
 		usort($emojiInfos, function(EmojiInfo $a, EmojiInfo $b) {
-			return $a->getOffset() > $b->getOffset();
+		    if($a->getOffset() == $b->getOffset()) {
+		        return 0;
+            }
+		    return $a->getOffset() < $b->getOffset() ? -1 : 1;
 		});
 
 		/** @var EmojiInfo[] $data */

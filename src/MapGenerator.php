@@ -42,12 +42,6 @@ class MapGenerator {
 		}
 
 		file_put_contents($dataDir."/map.json", json_encode($mapData));
-
-		$keys = array_keys($mapData);
-		usort($keys, function($a, $b) {
-			return strlen($b) - strlen($a);
-		});
-
 		file_put_contents($dataDir."/raw.json", json_encode($rawEmojis));
 	}
 
