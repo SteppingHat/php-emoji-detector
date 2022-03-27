@@ -29,7 +29,7 @@ The object will contain the following information:
 
 | Property    | Description |
 | ----------- | ----------- |
-| `emoji`     | The emoji chacater itself |
+| `emoji`     | The emoji character itself |
 | `name`      | A user friendly name of the specific emoji |
 | `shortName` | A shortened name of the emoji |
 | `category`  | A user friendly category name for the emoji |
