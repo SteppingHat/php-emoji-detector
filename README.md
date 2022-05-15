@@ -38,7 +38,7 @@ The object will contain the following information:
 | `offset`    | The position in the string where the emoji starts |
 | `mbOffset`  | The multibyte position in the string where the emoji starts |
 
-All of these properties are protected, but can be accessed by their appropriate getters and setters. E.g. `getCategory()` or `setSkinTone()`.
+All of these properties are protected, but can be accessed by their appropriate getters and setters. E.g. `getCategory()` or `getSkinTone()`.
 
 
 ### Emoji detection
@@ -90,7 +90,7 @@ require_once('vendor/autoload.php');
 use SteppingHat\EmojiDetector;
 
 $input = "I ❤️ to 👨‍💻";
-$detector = new SteppingHat\EmojiDetector\EmojiDetector();
+$detector = new EmojiDetector();
 $emojis = $detector->detect($input);
 
 print_r($emojis);
@@ -151,11 +151,28 @@ require_once('vendor/autoload.php');
 
 use SteppingHat\EmojiDetector;
 
-$detector = new SteppingHat\EmojiDetector\EmojiDetector();
+$detector = new EmojiDetector();
 
 $detector->isSingleEmoji("💩"); // Returns TRUE
 $detector->isSingleEmoji("Time to dance 🌚"); // Returns FALSE
 $detector->isSingleEmoji("🍆🍒"); // Returns FALSE
+```
+
+### Testing if a string is completely emojis
+
+Similar to calling, `isSingleEmoji`, calling `isEmojiString` will check if a string only contains emojis.
+
+```php
+<?php
+
+require_once('vendor/autoload.php')
+
+use SteppingHat\EmojiDetector;
+
+$detector = new EmojiDetector();
+
+$detector->isEmojiString("😂😂😂"); // Returns TRUE
+$detector->isEmojiString("Deez nuts 🥜") // Returns FALSE
 ```
 
 ## Tests
@@ -163,7 +180,7 @@ $detector->isSingleEmoji("🍆🍒"); // Returns FALSE
 Included for library development purposes is a small set of test cases to assure that basic library functions work as expected. These tests can be launched by running the following:
 
 ```bash
-$ php vendor/bin/simple-phpunit
+$ composer test
 ```
 
 ## License

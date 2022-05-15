@@ -1,6 +1,6 @@
 <?php
 
-namespace SteppingHat\Test\EmojiDetector;
+namespace SteppingHat\EmojiDetector\Tests;
 
 use PHPUnit\Framework\TestCase;
 use SteppingHat\EmojiDetector\EmojiDetector;
@@ -47,6 +47,13 @@ class EmojiDetectorTest extends TestCase {
 		$this->assertSame(0, $emoji->getMbOffset(), "Emoji is indicating a position other than the start of the string");
 		$this->assertSame(['2764', 'FE0F'], $emoji->getHexCodes(), "Invalid hex codes representing the emoji were presented");
 	}
+
+    public function testDetectZWJEmoji() {
+        $string = '🚣‍♂️';
+        $emojis = (new EmojiDetector())->detect($string);
+
+        $this->assertCount(1, $emojis);
+    }
 
 	public function testDetectEmojiInString() {
 		$string  = 'LOL 😂!';
@@ -163,5 +170,42 @@ class EmojiDetectorTest extends TestCase {
 		$string = '👨💻';    // This one does not have a ZWJ character
 		$this->assertFalse($detector->isSingleEmoji($string));
 	}
+
+    public function emojiStringDataProvider(): iterable {
+        yield ['👀'];
+        yield ['🙃🔫'];
+        yield ['😂😂😂😂😂😂😂😂😂😂'];
+        yield ['❤'];
+        yield ['🚣‍♂️'];
+    }
+
+    /**
+     * @dataProvider emojiStringDataProvider
+     */
+    public function testEmojiString(string $string) {
+        $detector = new EmojiDetector();
+        $this->assertTrue($detector->isEmojiString($string));
+    }
+
+    public function notPureEmojisProvider(): iterable {
+        yield ['🌚 Seriously though, this emoji is such a meme'];
+        yield ['🗿 Well would you look at that 👀'];
+        yield ['Deez nuts 🥜'];
+        yield ['HA! GOOTEEM!!'];
+        yield ['❤!'];
+        yield ['ޟ'];
+        yield ['Ѩ'];
+        yield ['Ҋ'];
+        yield ['ԪԪ'];
+        yield ['ԪԪ❗'];
+    }
+
+    /**
+     * @dataProvider notPureEmojisProvider
+     */
+    public function testFailEmojiString(string $string) {
+        $detector = new EmojiDetector();
+        $this->assertFalse($detector->isEmojiString($string));
+    }
 
 }
