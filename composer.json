@@ -15,6 +15,11 @@
 	  "SteppingHat\\EmojiDetector\\": "src/"
 	}
   },
+  "autoload-dev": {
+    "psr-4": {
+      "SteppingHat\\EmojiDetector\\Tests\\": "tests/"
+    }
+  },
   "minimum-stability": "dev",
   "require": {
 	"php": ">=7.1",
@@ -22,9 +27,11 @@
 	"ext-json": "*"
   },
   "require-dev": {
-	"symfony/phpunit-bridge": "^5.0@dev"
+	"phpunit/phpunit": "9.5",
+    "symfony/var-dumper": "5.4.x-dev"
   },
   "scripts": {
-	"generate-map": "SteppingHat\\EmojiDetector\\MapGenerator::generateMap"
+	"generate-map": "SteppingHat\\EmojiDetector\\MapGenerator::generateMap",
+    "test": "phpunit"
   }
 }
