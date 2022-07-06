@@ -12,14 +12,14 @@ This :clap: is :clap: the :clap: library :clap: you :clap: want!
 
 This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 13.1 of the emoji standard.
 
-
 ## Installation
 
 Install this library using composer
 
-    $ composer require steppinghat/emoji-detector
-    
-    
+```
+$ composer require steppinghat/emoji-detector
+```
+
 ## Usage
 
 ### The Model
@@ -48,10 +48,10 @@ All of these properties are protected, but can be accessed by their appropriate 
 
 require_once('vendor/autoload.php');
 
-use SteppingHat\EmojiDetector;
+use SteppingHat\EmojiDetector\EmojiDetector;
 
 $input = "Hello 👋 world!";
-$detector = EmojiDetector();
+$detector = new EmojiDetector();
 $emojis = $detector->detect($input);
 
 print_r($emojis);
@@ -87,7 +87,7 @@ The library has full support for complex emoji's that make use of the ZWJ (Zero 
 
 require_once('vendor/autoload.php');
 
-use SteppingHat\EmojiDetector;
+use SteppingHat\EmojiDetector\EmojiDetector;
 
 $input = "I ❤️ to 👨‍💻";
 $detector = new EmojiDetector();
@@ -149,7 +149,7 @@ Sometimes it is handy to test if an input string is a single emoji on it's own.
 
 require_once('vendor/autoload.php');
 
-use SteppingHat\EmojiDetector;
+use SteppingHat\EmojiDetector\EmojiDetector;
 
 $detector = new EmojiDetector();
 
@@ -167,7 +167,7 @@ Similar to calling, `isSingleEmoji`, calling `isEmojiString` will check if a str
 
 require_once('vendor/autoload.php')
 
-use SteppingHat\EmojiDetector;
+use SteppingHat\EmojiDetector\EmojiDetector;
 
 $detector = new EmojiDetector();
 
