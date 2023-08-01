@@ -1,7 +1,7 @@
 PHP Emoji Detector
 ==================
 
-[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector) [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector) [![License](https://poser.pugx.org/steppinghat/emoji-detector/license)](//packagist.org/packages/steppinghat/emoji-detector) [![Build Status](https://travis-ci.com/SteppingHat/php-emoji-detector.svg?branch=master)](https://travis-ci.com/SteppingHat/php-emoji-detector)
+[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector) [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector) [![License](https://poser.pugx.org/steppinghat/emoji-detector/license)](//packagist.org/packages/steppinghat/emoji-detector) ![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master)
 
 Have an input string full of emoji's and you want to know detailed information about each emoji?
 Want to build an easy way to validate emoji's that come in as input data?
