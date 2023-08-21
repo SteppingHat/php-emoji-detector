@@ -1,7 +1,7 @@
 PHP Emoji Detector
 ==================
 
-[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector) [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector) [![License](https://poser.pugx.org/steppinghat/emoji-detector/license)](//packagist.org/packages/steppinghat/emoji-detector) ![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector) [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector) [![License](https://img.shields.io/packagist/l/steppinghat/emoji-detector)](//packagist.org/packages/steppinghat/emoji-detector) ![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master) ![Unicode Version](https://img.shields.io/badge/unicode-15.0-purple)
 
 Have an input string full of emoji's and you want to know detailed information about each emoji?
 Want to build an easy way to validate emoji's that come in as input data?
@@ -10,7 +10,7 @@ This :clap: is :clap: the :clap: library :clap: you :clap: want!
 
 ## What does this thing do?
 
-This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 13.1 of the emoji standard.
+This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 15.0 of the emoji standard.
 
 ## Installation
 

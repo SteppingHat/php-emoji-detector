@@ -39,7 +39,7 @@ class EmojiDetectorTest extends TestCase {
 
 		$this->assertSame('❤️', $emoji->getEmoji(), "Expected emoji does not match actual emoji in string");
 		$this->assertSame('red heart', $emoji->getName(), "Expected emoji name does not match the actual emoji name");
-		$this->assertSame('emotion', $emoji->getShortName(), "Expected emoji name does not match the actual emoji name");
+		$this->assertSame('heart', $emoji->getShortName(), "Expected emoji name does not match the actual emoji name");
 		$this->assertSame('Smileys & Emotion', $emoji->getCategory(), "Expected emoji category does not match the actual emoji category");
 		$this->assertSame(2, $emoji->getMbLength(), "More emoji characters in the hex string are present than expected");
 		$this->assertNull($emoji->getSkinTone(), "Emoji object contains a skin tone when none should exist");
@@ -134,7 +134,7 @@ class EmojiDetectorTest extends TestCase {
 
 		$this->assertSame('❤️', $emoji->getEmoji(), "Expected emoji does not match actual emoji in string");
 		$this->assertSame('red heart', $emoji->getName(), "Expected emoji name does not match the actual emoji name");
-		$this->assertSame('emotion', $emoji->getShortName(), "Expected emoji name does not match the actual emoji name");
+		$this->assertSame('heart', $emoji->getShortName(), "Expected emoji name does not match the actual emoji name");
 		$this->assertSame('Smileys & Emotion', $emoji->getCategory(), "Expected emoji category does not match the actual emoji category");
 		$this->assertCount(2, $emoji->getHexCodes(), "More emoji characters in the hex string are present than expected");
 		$this->assertSame(null, $emoji->getSkinTone(), "Emoji reported a different skin tone than expected");
