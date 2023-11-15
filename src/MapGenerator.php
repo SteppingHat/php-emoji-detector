@@ -4,7 +4,7 @@ namespace SteppingHat\EmojiDetector;
 
 class MapGenerator {
 
-    private static $upstreamUrl = 'https://unpkg.com/emoji.json@15.0.0/emoji.json';
+    private static $upstreamUrl = 'https://unpkg.com/emoji.json@15.1.0/emoji.json';
 
 	public static function generateMap() {
 		$dataDir = __DIR__."/../var";
