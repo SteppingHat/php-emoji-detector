@@ -105,6 +105,23 @@ class EmojiDetectorTest extends TestCase {
 		$this->assertSame(['1F4A9'], $emoji->getHexCodes(), "Invalid hex codes representing the emoji were presented");
 	}
 
+	public function testDetectDuplicateEmoji() {
+		$string = '💩💩';
+		$emojis = (new EmojiDetector())->detect($string);
+
+		$this->assertCount(2, $emojis);
+
+		$emoji = array_shift($emojis);
+		$this->assertSame('💩', $emoji->getEmoji(), "Expected emoji does not match actual emoji in string");
+		$this->assertSame(0, $emoji->getOffset(), "Emoji is indicating a position that is not expected");
+		$this->assertSame(0, $emoji->getMbOffset(), "Emoji is indicating a position that is not expected");
+
+		$emoji = array_shift($emojis);
+		$this->assertSame('💩', $emoji->getEmoji(), "Expected emoji does not match actual emoji in string");
+		$this->assertSame(4, $emoji->getOffset(), "Emoji is indicating a position that is not expected");
+		$this->assertSame(1, $emoji->getMbOffset(), "Emoji is indicating a position that is not expected");
+	}
+
 	public function testDetectSkinToneEmoji() {
 		$string = '🤦🏻';
 		$emojis = (new EmojiDetector())->detect($string);
