@@ -122,6 +122,13 @@ class EmojiDetectorTest extends TestCase {
 		$this->assertSame(1, $emoji->getMbOffset(), "Emoji is indicating a position that is not expected");
 	}
 
+	public function testDetectDistinctEmoji() {
+		$string = 'WHAT IS A KILOMETER 🗣🗣🗣🦅🦅🦅';
+		$emojis = (new EmojiDetector())->detectDistinct($string);
+
+		$this->assertCount(2, $emojis);
+	}
+
 	public function testDetectSkinToneEmoji() {
 		$string = '🤦🏻';
 		$emojis = (new EmojiDetector())->detect($string);
