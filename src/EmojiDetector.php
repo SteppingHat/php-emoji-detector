@@ -33,17 +33,31 @@ class EmojiDetector {
 
     /**
      * @param $string
-     * @param bool $unique
      * @return EmojiInfo[]
      */
-	public function detect($string, bool $unique = true): array {
+	public function detect($string): array {
+		$matches = $this->findEmojis($string, false);
+		return $this->process($matches, $string);
+	}
 
+	/**
+	 * @param string $string
+	 * @return EmojiInfo[]
+	 */
+	public function detectDistinct($string): array {
+		$matches = $this->findEmojis($string, true);
+		return $this->process($matches, $string);
+	}
+
+	/**
+	 * @param array $matches
+	 * @param bool $unique
+	 */
+	private function process($matches, $string): array {
 		$oldEncoding = mb_internal_encoding();
 		mb_internal_encoding('UTF-8');
 
-		$matches = $this->findEmojis($string, $unique);
-
-        $emojiInfos = $this->processMatches($matches, $string);
+		$emojiInfos = $this->processMatches($matches, $string);
 
         $this->sortEmojiInfos($emojiInfos);
 

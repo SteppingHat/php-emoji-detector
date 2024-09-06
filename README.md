@@ -1,7 +1,11 @@
 PHP Emoji Detector
 ==================
 
-[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector) [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector) [![License](https://img.shields.io/packagist/l/steppinghat/emoji-detector)](//packagist.org/packages/steppinghat/emoji-detector) ![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master) ![Unicode Version](https://img.shields.io/badge/unicode-15.1-purple)
+[![Latest Stable Version](https://poser.pugx.org/steppinghat/emoji-detector/v)](//packagist.org/packages/steppinghat/emoji-detector)
+[![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector)
+[![License](https://img.shields.io/packagist/l/steppinghat/emoji-detector)](//packagist.org/packages/steppinghat/emoji-detector)
+![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master)
+![Unicode Version](https://img.shields.io/badge/unicode-15.1-purple)
 
 Have an input string full of emoji's and you want to know detailed information about each emoji?
 Want to build an easy way to validate emoji's that come in as input data?
@@ -20,7 +24,22 @@ Install this library using composer
 $ composer require steppinghat/emoji-detector
 ```
 
+ℹ️ **We recommend using the [Caret Version Range (`^`)](https://getcomposer.org/doc/articles/versions.md#caret-version-range-)** (see below for why)
+
+### Updates
+
+Updates to the Unicode version will always be released as new minor versions. We recommend using the (`^`)
+caret version range so that new Emoji's are automatically supported in your project when running `composer update`.
+
+Any breaking changes will be released as new major versions, and bufxies will be released as new patch versions as usual.
+
 ## Usage
+
+* [The Model](#the-model)
+* [Emoji detection](#emoji-detection)
+* [Detect distinct emojis](#detect-distinct-emojis)
+* [Testing for single emojis](#testing-for-single-emojis)
+* [Testing if a string is completely emojis](#testing-if-a-string-is-completely-emojis)
 
 ### The Model
 
@@ -134,6 +153,63 @@ Array
 
             [offset:protected] => 13
             [mbOffset:protected] => 9
+        )
+
+)
+```
+
+### Detect distinct emojis
+
+If you only want to detect distinct emojis in a string, you can use the `detectDistinct` method. This will return an array of distinct emojis found in the input string, and the position of the first distinct occurence of that emoji.
+
+```php
+<?php
+
+require_once('vendor/autoload.php');
+
+use SteppingHat\EmojiDetector\EmojiDetector;
+
+$detector = new EmojiDetector();
+
+$emojis = $detector->detectDistinct("WHAT IS A KILOMETER 🗣🗣🗣🦅🦅🦅")
+
+print_r($emojis);
+```
+
+The above will produce the following output:
+
+```
+(
+    [0] => SteppingHat\EmojiDetector\Model\EmojiInfo Object
+        (
+            [emoji:protected] => 🗣
+            [name:protected] => speaking head
+            [shortName:protected] => person-symbol
+            [category:protected] => People & Body
+            [skinTone:protected] => 
+            [hexCodes:protected] => Array
+                (
+                    [0] => 1F5E3
+                )
+
+            [offset:protected] => 20
+            [mbOffset:protected] => 20
+        )
+
+    [1] => SteppingHat\EmojiDetector\Model\EmojiInfo Object
+        (
+            [emoji:protected] => 🦅
+            [name:protected] => eagle
+            [shortName:protected] => animal-bird
+            [category:protected] => Animals & Nature
+            [skinTone:protected] => 
+            [hexCodes:protected] => Array
+                (
+                    [0] => 1F985
+                )
+
+            [offset:protected] => 32
+            [mbOffset:protected] => 23
         )
 
 )
