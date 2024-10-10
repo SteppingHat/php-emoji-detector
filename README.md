@@ -31,7 +31,7 @@ $ composer require steppinghat/emoji-detector
 Updates to the Unicode version will always be released as new minor versions. We recommend using the (`^`)
 caret version range so that new Emoji's are automatically supported in your project when running `composer update`.
 
-Any breaking changes will be released as new major versions, and bufxies will be released as new patch versions as usual.
+Any breaking changes will be released as new major versions, and bugfixes will be released as new patch versions as usual.
 
 ## Usage
 
@@ -248,8 +248,8 @@ use SteppingHat\EmojiDetector\EmojiDetector;
 $detector = new EmojiDetector();
 
 $detector->isEmojiString("😂😂😂"); // Returns TRUE
-$detector->isEmojiString("🏎️💨") // Returns TRUE
-$detector->isEmojiString("Deez nuts 🥜") // Returns FALSE
+$detector->isEmojiString("🏎️💨"); // Returns TRUE
+$detector->isEmojiString("Deez nuts 🥜"); // Returns FALSE
 ```
 
 ## Tests
