@@ -260,6 +260,11 @@ Included for library development purposes is a small set of test cases to assure
 $ composer test
 ```
 
+To run tests against multiple PHP versions, either push to GitHub and open a PR, or preferrably use act locally:
+```bash
+act
+```
+
 ## License
 
 Made with :heart: by Javan Eskander
