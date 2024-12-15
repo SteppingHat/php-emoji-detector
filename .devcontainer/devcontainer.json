@@ -1,0 +1,13 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/php
+{
+	"name": "PHP",
+	"image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/composer:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/dhoeric/features/act:1": {}
+	},
+	"postCreateCommand": "composer install"
+}
