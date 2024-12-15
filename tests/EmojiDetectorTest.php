@@ -26,9 +26,6 @@ class EmojiDetectorTest extends TestCase {
 		$this->assertSame(['1F346'], $emoji->getHexCodes(), "Invalid hex codes representing the emoji were presented");
 	}
 
-	/**
-	 *
-	 */
 	public function testDetectSimpleEmoji() {
 		$string = '❤️';
 		$emojis = (new EmojiDetector())->detect($string);
@@ -195,7 +192,7 @@ class EmojiDetectorTest extends TestCase {
 		$this->assertFalse($detector->isSingleEmoji($string));
 	}
 
-    public function emojiStringDataProvider(): iterable {
+    public static function emojiStringDataProvider(): iterable {
         yield ['👀'];
         yield ['🙃🔫'];
         yield ['😂😂😂😂😂😂😂😂😂😂'];
@@ -211,7 +208,7 @@ class EmojiDetectorTest extends TestCase {
         $this->assertTrue($detector->isEmojiString($string));
     }
 
-    public function notPureEmojisProvider(): iterable {
+    public static function impureEmojisProvider(): iterable {
         yield ['🌚 Seriously though, this emoji is such a meme'];
         yield ['🗿 Well would you look at that 👀'];
         yield ['Deez nuts 🥜'];
@@ -225,7 +222,7 @@ class EmojiDetectorTest extends TestCase {
     }
 
     /**
-     * @dataProvider notPureEmojisProvider
+     * @dataProvider impureEmojisProvider
      */
     public function testFailEmojiString(string $string) {
         $detector = new EmojiDetector();
