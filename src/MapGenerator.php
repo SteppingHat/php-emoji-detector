@@ -8,6 +8,13 @@ class MapGenerator {
 
 	private static $upstreamUrl = "https://unicode.org/Public/emoji/latest/emoji-test.txt";
 
+	/**
+	 * Generates a mapping of emoji data from the upstream Unicode text source.
+	 *
+	 * This method reads emoji information from a remote text file, extracting the version, group, subgroup, and individual emoji details from each line. It processes each valid line by parsing it to build a data array that includes the emoji, its name (with variation if applicable), and its categorization. The resulting mapping, along with a list of raw emojis and metadata containing the version, is saved as JSON files in a designated local directory. If the file cannot be opened or if the version information is missing, an exception is thrown.
+	 *
+	 * @throws \Exception If the upstream file cannot be opened or if the version information is missing.
+	 */
 	public static function generateMap() {
 		$dataDir = __DIR__."/../var";
 		if(!is_dir($dataDir)) mkdir($dataDir, 0777, true);
@@ -82,6 +89,21 @@ class MapGenerator {
 		file_put_contents($dataDir."/metadata.json", json_encode($metadata, true));
 	}
 
+	/**
+	 * Parses a line of emoji data and extracts its components.
+	 *
+	 * The function applies a regular expression to retrieve the emoji codes, the emoji character,
+	 * and a description that includes the emoji name and an optional variation (separated by ": " if present).
+	 * It returns an associative array with keys 'codes', 'emoji', 'name', and 'variation'.
+	 *
+	 * @param string $line A single line from the emoji data file.
+	 * @return array Associative array containing the parsed emoji data.
+	 *               - 'codes': The extracted emoji codes.
+	 *               - 'emoji': The emoji character.
+	 *               - 'name': The trimmed name extracted from the description.
+	 *               - 'variation': The trimmed variation if provided, otherwise null.
+	 * @throws \Exception If the line does not conform to the expected format.
+	 */
 	private static function parseLine(string $line) {
 		$pattern = '/(\S+(?:\s+\S+)*?)\s*;\s*([\w-]+)\s*#\s*(\S+)\s*E\d+\.\d+\s*(.*)/u';
 		preg_match($pattern, $line, $matches);

@@ -153,9 +153,14 @@ class EmojiDetector {
     }
 
     /**
-     * @param $matches
-     * @param string $string
-     * @return EmojiInfo[]
+     * Processes regex match results to generate detailed EmojiInfo objects.
+     *
+     * Iterates through each regex match to extract the emoji string and determine its byte and multibyte offsets in the original string. Converts each emoji into an array of hexadecimal code points and, if present in the mapping, populates its name, category, and short name (sourced from the 'subCategory' field). Also assigns the appropriate skin tone based on the hex codes.
+     *
+     * @param mixed $matches Array of regex match results where each element contains the emoji and its starting offset.
+     * @param string $string The original string containing the emojis.
+     *
+     * @return EmojiInfo[] Array of EmojiInfo objects with detailed information for each detected emoji.
      */
     private function processMatches($matches, string $string) {
         /** @var EmojiInfo[] $emojiInfos */
