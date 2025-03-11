@@ -180,8 +180,8 @@ class EmojiDetector {
             // Denote the emoji name
             if(array_key_exists($emojiInfo->getHexString(), $this->map)) {
                 $emojiInfo->setName($this->map[$emojiInfo->getHexString()]['name']);
-                $emojiInfo->setShortName($this->map[$emojiInfo->getHexString()]['shortName']);
                 $emojiInfo->setCategory($this->map[$emojiInfo->getHexString()]['category']);
+                $emojiInfo->setShortName($this->map[$emojiInfo->getHexString()]['subCategory']);
             }
 
             // Denote the skin tone
