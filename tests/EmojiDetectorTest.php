@@ -244,7 +244,6 @@ class EmojiDetectorTest extends TestCase {
 
 	/**
 	 * @dataProvider sampledEmojiDataProvider
-	 
 	 */
 	public function testSampledEmoji(string $got, array $want) {
 		$detector = new EmojiDetector();
