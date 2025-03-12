@@ -5,7 +5,7 @@ PHP Emoji Detector
 [![Total Downloads](https://poser.pugx.org/steppinghat/emoji-detector/downloads)](//packagist.org/packages/steppinghat/emoji-detector)
 [![License](https://img.shields.io/packagist/l/steppinghat/emoji-detector)](//packagist.org/packages/steppinghat/emoji-detector)
 ![Build Status](https://github.com/steppinghat/php-emoji-detector/actions/workflows/build_and_test.yml/badge.svg?branch=master)
-![Unicode Version](https://img.shields.io/badge/unicode-15.1-purple)
+![Unicode Version](https://img.shields.io/badge/unicode-16.0-purple)
 
 Have an input string full of emoji's and you want to know detailed information about each emoji?
 Want to build an easy way to validate emoji's that come in as input data?
@@ -14,7 +14,7 @@ This :clap: is :clap: the :clap: library :clap: you :clap: want!
 
 ## What does this thing do?
 
-This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 15.1 of the emoji standard.
+This library simply parses input strings and returns a list of relevant information about emoji's that are present in the string. It currently supports version 16.0 of the emoji standard.
 
 ## Installation
 
@@ -35,11 +35,18 @@ Any breaking changes will be released as new major versions, and bugfixes will b
 
 ## Usage
 
-* [The Model](#the-model)
-* [Emoji detection](#emoji-detection)
-* [Detect distinct emojis](#detect-distinct-emojis)
-* [Testing for single emojis](#testing-for-single-emojis)
-* [Testing if a string is completely emojis](#testing-if-a-string-is-completely-emojis)
+- [PHP Emoji Detector](#php-emoji-detector)
+  - [What does this thing do?](#what-does-this-thing-do)
+  - [Installation](#installation)
+    - [Updates](#updates)
+  - [Usage](#usage)
+    - [The Model](#the-model)
+    - [Emoji detection](#emoji-detection)
+    - [Detect distinct emojis](#detect-distinct-emojis)
+    - [Testing for single emojis](#testing-for-single-emojis)
+    - [Testing if a string is completely emojis](#testing-if-a-string-is-completely-emojis)
+  - [Tests](#tests)
+  - [License](#license)
 
 ### The Model
 
@@ -271,4 +278,6 @@ Made with :heart: by Javan Eskander
 
 Available for use under the MIT license.
 
-Emoji data sourced from [amio/emoji.json](https://github.com/amio/emoji.json)
+It includes data derived from the Unicode® Character Database, which is covered under the [Unicode License v3](https://www.unicode.org/license.html).
+The Unicode® Standard is a trademark of Unicode, Inc. in the United States and other countries.
+
