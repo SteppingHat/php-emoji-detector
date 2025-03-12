@@ -229,4 +229,40 @@ class EmojiDetectorTest extends TestCase {
         $this->assertFalse($detector->isEmojiString($string));
     }
 
+	public static function sampledEmojiDataProvider(): iterable {
+		yield [	// unicode 16.0
+			'got' => '🫩',
+			'want' => [
+				'codes' => '1FAE9',
+				'emoji' => '🫩',
+				'name' => 'face with bags under eyes',
+				'category' => 'Smileys & Emotion',
+				'subCategory' => 'face-sleepy'
+			]
+		];
+	}
+
+	/**
+	 * @dataProvider sampledEmojiDataProvider
+	 
+	 */
+	public function testSampledEmoji(string $got, array $want) {
+		$detector = new EmojiDetector();
+		$emojis = $detector->detect($got);
+
+		$this->assertCount(1, $emojis);
+
+		$emoji = array_shift($emojis);
+
+		$data = [
+			'codes' => implode(' ', $emoji->getHexCodes()),
+			'emoji' => $emoji->getEmoji(),
+			'name' => $emoji->getName(),
+			'category' => $emoji->getCategory(),
+			'subCategory' => $emoji->getShortName()
+		];
+
+		$this->assertSame($want, $data);
+	}
+
 }
