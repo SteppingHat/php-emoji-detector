@@ -2,8 +2,6 @@
 
 namespace SteppingHat\EmojiDetector;
 
-use DateTime;
-
 class MapGenerator {
 
 	private static $upstreamUrl = "https://unicode.org/Public/emoji/latest/emoji-test.txt";
@@ -16,8 +14,6 @@ class MapGenerator {
 		if(!$handle) {
 			throw new \Exception("Failed to fetch emoji data from unicode.org");
 		}
-
-		
 
 		$mapData = [];
 		$rawEmojis = [];
@@ -103,5 +99,4 @@ class MapGenerator {
 			'variation' => $variation ? trim($variation) : null,
 		];
 	}
-
 }
