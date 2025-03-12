@@ -80,6 +80,42 @@ class MapGeneratorTest extends TestCase {
                 'variation' => 'woman, woman, medium-light skin tone, medium-dark skin tone'
             ]
         ];
+        yield [
+            'raw' => '1F469 1F3FB 200D 2764 FE0F 200D 1F48B 200D 1F468 1F3FE ; fully-qualified     # 👩🏻‍❤️‍💋‍👨🏾 E13.1 kiss: woman, man, light skin tone, medium-dark skin tone',
+            'expected' => [
+                'codes' => '1F469 1F3FB 200D 2764 FE0F 200D 1F48B 200D 1F468 1F3FE',
+                'emoji' => '👩🏻‍❤️‍💋‍👨🏾',
+                'name' => 'kiss',
+                'variation' => 'woman, man, light skin tone, medium-dark skin tone'
+            ]
+        ];
+        yield [
+            'raw' => '1F469 1F3FB 200D 2764 200D 1F48B 200D 1F468 1F3FE      ; minimally-qualified # 👩🏻‍❤‍💋‍👨🏾 E13.1 kiss: woman, man, light skin tone, medium-dark skin tone',
+            'expected' => [
+                'codes' => '1F469 1F3FB 200D 2764 200D 1F48B 200D 1F468 1F3FE',
+                'emoji' => '👩🏻‍❤‍💋‍👨🏾',
+                'name' => 'kiss',
+                'variation' => 'woman, man, light skin tone, medium-dark skin tone'
+            ]
+        ];
+        yield [
+            'raw' => '1F43F FE0F                                             ; fully-qualified     # 🐿️ E0.7 chipmunk',
+            'expected' => [
+                'codes' => '1F43F FE0F',
+                'emoji' => '🐿️',
+                'name' => 'chipmunk',
+                'variation' => null
+            ]
+        ];
+        yield [
+            'raw' => '1F43F                                                  ; unqualified         # 🐿 E0.7 chipmunk',
+            'expected' => [
+                'codes' => '1F43F',
+                'emoji' => '🐿',
+                'name' => 'chipmunk',
+                'variation' => null
+            ]
+        ];
     }
 
     /**
@@ -89,9 +125,7 @@ class MapGeneratorTest extends TestCase {
         $reflection = new \ReflectionClass(MapGenerator::class);
         $method = $reflection->getMethod('parseLine');
         $method->setAccessible(true);
-        for ($i = 1; $i < 1000; $i++) {
-            $parsedLine = $method->invoke(null, $raw);
-        }
+        $parsedLine = $method->invoke(null, $raw);
         $this->assertEquals($expected, $parsedLine);
     }
 
