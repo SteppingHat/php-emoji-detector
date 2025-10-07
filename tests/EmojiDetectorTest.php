@@ -240,6 +240,28 @@ class EmojiDetectorTest extends TestCase {
 				'subCategory' => 'face-sleepy'
 			]
 		];
+
+		yield [ // unicode 17
+			'got' => '🫍',
+			'want' => [
+				'codes' => '1FACD',
+				'emoji' => '🫍',
+				'name' => 'orca',
+				'category' => 'Animals & Nature',
+				'subCategory' => 'animal-marine',
+			]
+		];
+
+		yield [ // unicode 17
+			'got' => '🧑🏽‍🩰',
+			'want' => [
+				'codes' => '1F9D1 1F3FD 200D 1FA70',
+				'emoji' => '🧑🏽‍🩰',
+				'name' => 'ballet dancer: medium skin tone',
+				'category' => 'People & Body',
+				'subCategory' => 'person-activity'
+			]
+		];
 	}
 
 	/**
