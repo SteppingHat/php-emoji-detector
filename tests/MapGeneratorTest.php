@@ -124,7 +124,6 @@ class MapGeneratorTest extends TestCase {
     public function testParseLine(string $raw, array $expected) {
         $reflection = new \ReflectionClass(MapGenerator::class);
         $method = $reflection->getMethod('parseLine');
-        $method->setAccessible(true);
         $parsedLine = $method->invoke(null, $raw);
         $this->assertEquals($expected, $parsedLine);
     }
