@@ -262,6 +262,39 @@ class EmojiDetectorTest extends TestCase {
 				'subCategory' => 'person-activity'
 			]
 		];
+
+		yield [ // unicode 18
+			'got' => "\u{1FAF9}",
+			'want' => [
+				'codes' => '1FAF9',
+				'emoji' => "\u{1FAF9}",
+				'name' => 'leftwards thumb sign',
+				'category' => 'People & Body',
+				'subCategory' => 'hand-fingers-closed',
+			]
+		];
+
+		yield [ // unicode 18
+			'got' => "\u{1FAF9}\u{1F3FB}",
+			'want' => [
+				'codes' => '1FAF9 1F3FB',
+				'emoji' => "\u{1FAF9}\u{1F3FB}",
+				'name' => 'leftwards thumb sign: light skin tone',
+				'category' => 'People & Body',
+				'subCategory' => 'hand-fingers-closed',
+			]
+		];
+
+		yield [ // unicode 18
+			'got' => "\u{1FA8B}",
+			'want' => [
+				'codes' => '1FA8B',
+				'emoji' => "\u{1FA8B}",
+				'name' => 'meteor',
+				'category' => 'Travel & Places',
+				'subCategory' => 'sky & weather',
+			]
+		];
 	}
 
 	/**
