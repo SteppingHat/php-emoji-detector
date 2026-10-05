@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/php
 {
 	"name": "PHP",
-	"image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/php:8.5-bookworm",
 	"features": {
 		"ghcr.io/devcontainers-extra/features/composer:1": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:4": {},
